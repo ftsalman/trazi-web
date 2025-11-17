@@ -1,0 +1,95 @@
+import React from "react";
+import { CardContainer } from "../ui/CardContainer";
+import {
+  Bar,
+  BarChart,
+  ReferenceLine,
+  ResponsiveContainer,
+  XAxis,
+} from "recharts";
+import { IconChatBar } from "../../assets/icons/interfaceIcons2";
+import { Button } from "../ui/button/Button";
+
+export const EnrollmentsChart = ({
+  onFetch = () => {},
+  data = [],
+  isLoading = false,
+}) => {
+  const TOTAL_ENROLLMENTS =
+    data.length > 0
+      ? data.reduce((sum, item) => sum + (item.value || 0), 0)
+      : 134;
+
+  return (
+    <CardContainer>
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <p className="text-sm text-gray-500">Enrollments</p>
+          <p className="text-[32px] font-bold text-[#0B1A39] leading-none">
+            {TOTAL_ENROLLMENTS}
+          </p>
+        </div>
+
+        <Button
+          variant="tertiary"
+          size="sm"
+          className="p-2 bg-gray-50 rounded-lg "
+        >
+          <IconChatBar size="20" />
+        </Button>
+      </div>
+
+      <div className="w-full h-[15rem] mt-2">
+        {isLoading ? (
+          <div className="flex items-center justify-center h-full">
+            <p>Loading chart...</p>
+          </div>
+        ) : data.length > 0 ? (
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={data}>
+              <ReferenceLine
+                y={134}
+                stroke="#AAAAAA"
+                strokeDasharray="4 4"
+                strokeWidth={1}
+              />
+
+              <Bar
+                dataKey="value"
+                radius={[6, 6, 0, 0]}
+                barSize={30}
+                fill="#E8ECF7"
+                shape={(props) => {
+                  const { x, y, width, height, payload } = props;
+                  const isHighlight = payload.highlight;
+
+                  return (
+                    <rect
+                      x={x}
+                      y={y}
+                      width={width}
+                      height={height}
+                      rx="6"
+                      ry="6"
+                      fill={isHighlight ? "#000" : "#E8ECF7"}
+                    />
+                  );
+                }}
+              />
+              <XAxis
+                dataKey="month"
+                tick={{ fill: "#8A8A8A" }}
+                axisLine={false}
+                tickLine={false}
+              />
+            </BarChart>
+          </ResponsiveContainer>
+        ) : (
+          <div className="flex items-center justify-center h-full">
+            <p className="text-gray-500">No data available</p>
+          </div>
+        )}
+      </div>
+    </CardContainer>
+  );
+};
