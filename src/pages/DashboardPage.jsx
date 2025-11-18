@@ -3,6 +3,7 @@ import { StatesList } from "../components/dashboard/StatesList";
 import { EnrollmentsChart } from "../components/dashboard/EnrollmentsChart";
 import { EarningsChart } from "../components/dashboard/EarningsChart";
 import { CoursesChart } from "../components/dashboard/CoursesChart";
+import { TodayRevenueCard } from "../components/dashboard/TodayRevenueCard";
 
 const ENROLL_DATA = [
   { month: "Jan", value: 40 },
@@ -56,6 +57,21 @@ const COURSES_DATA = [
   { month: "Sep", programming: 170, design: 140, technology: 100 },
 ];
 
+
+const REVENUE_DATA = [
+  { value: 30 },
+  { value: 22 },
+  { value: 40 },
+  { value: 28 },
+  { value: 50 },
+  { value: 38 },
+  { value: 60 },
+  { value: 55 },
+  { value: 62 },
+  { value: 58 },
+];
+
+
 export const DashboardPage = () => {
   return (
     <div className="w-full py-4 space-y-8">
@@ -90,7 +106,10 @@ export const DashboardPage = () => {
         </div>
 
         <div className="xl:col-span-1">
-          <EarningsChart data={EARNINGS_DATA} />
+           <TodayRevenueCard
+           data={REVENUE_DATA}
+           
+           />
         </div>
       </div>
     </div>

@@ -21,26 +21,22 @@ export const CoursesChart = ({
         <div className="w-full h-[225px]">
           <ResponsiveContainer>
             <BarChart data={data} barSize={35}>
-              <XAxis dataKey="month" tick={{ fill: "#555" }} />
+              <XAxis dataKey="month" tick={{ fill: "#555" }} tickLine={false} />
               <YAxis tick={{ fill: "#555" }} />
               <Tooltip cursor={{ fill: "transparent" }} />
-              {/* Stacked Bars */}
               <Bar
                 dataKey="programming"
                 stackId="courses"
                 fill="#FFD700"
               />{" "}
-              {/* Yellow */}
               <Bar dataKey="design" stackId="courses" fill="#FFA500" />{" "}
-              {/* Orange */}
               <Bar dataKey="technology" stackId="courses" fill="#6A5500" />{" "}
-              {/* Brown */}
             </BarChart>
           </ResponsiveContainer>
         </div>
 
         {/* Legend */}
-        <div className="flex items-center gap-6 mt-4 text-sm">
+        <div className="flex items-center justify-around gap-6 mt-4 text-sm">
           <div className="flex items-center gap-1">
             <span className="w-3 h-3 rounded-full bg-[#FFD700]"></span>
             <p>Programing</p>
