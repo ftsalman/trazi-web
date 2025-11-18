@@ -71,6 +71,8 @@ const REVENUE_DATA = [
 ];
 
 export const DashboardPage = () => {
+
+
   const [fetchStatus, setFetchStatus] = useState("loading"); // loading, default, error
   const [dashboardData, setDashboardData] = useState(null);
 
@@ -92,17 +94,28 @@ export const DashboardPage = () => {
         />
 
         {/* States card Section  */}
-        <StatesList data={DUMMY_CARD} />
+        <StatesList 
+        data={DUMMY_CARD}
+        isLoading={false}
+        
+        />
 
         {/* Charts section */}
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-2">
           <div className="xl:col-span-2">
-            <EnrollmentsChart data={ENROLL_DATA} />
+            <EnrollmentsChart 
+            data={ENROLL_DATA}
+            isLoading={false}
+             />
           </div>
 
           <div className="xl:col-span-1">
-            <EarningsChart data={EARNINGS_DATA} />
+            <EarningsChart 
+            data={EARNINGS_DATA}
+            isLoading={false}
+            onFetch={()=>{}}
+             />
           </div>
         </div>
 
@@ -110,11 +123,17 @@ export const DashboardPage = () => {
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-2">
           <div className="xl:col-span-2">
-            <CoursesChart data={COURSES_DATA} />
+            <CoursesChart
+             data={COURSES_DATA} 
+             isLoading={false}
+             />
           </div>
 
           <div className="xl:col-span-1">
-            <TodayRevenueCard data={REVENUE_DATA} />
+            <TodayRevenueCard 
+            data={REVENUE_DATA}
+            isLoading={false}
+             />
           </div>
         </div>
       </div>

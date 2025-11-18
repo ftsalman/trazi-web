@@ -22,3 +22,27 @@
     opacity: 0.5;
   }
 }
+
+
+/* CHART OUTLINE */
+
+
+.recharts-rectangle,
+.recharts-rectangle:focus,
+.recharts-rectangle:active,
+.recharts-rectangle:focus-visible {
+  outline: none !important;
+  border: none !important;
+}
+
+
+.recharts-wrapper svg * {
+  outline: none !important;
+  border: none !important;
+}
+
+svg:focus {
+  outline: none !important;
+}
+
+

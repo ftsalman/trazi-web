@@ -22,6 +22,7 @@ export const EnrollmentsChart = ({
 
   return (
     <CardContainer>
+      {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div>
           <p className="text-sm text-gray-500">Enrollments</p>
@@ -39,10 +40,29 @@ export const EnrollmentsChart = ({
         </Button>
       </div>
 
+      {/* Chart Area */}
       <div className="w-full h-[15rem] mt-2">
         {isLoading ? (
-          <div className="flex items-center justify-center h-full">
-            <p>Loading chart...</p>
+          <div className="flex flex-col gap-3 h-full animate-pulse px-2">
+            {/* Skeleton Bars */}
+            <div className="flex items-end justify-between h-full gap-2">
+              {[...Array(10)].map((_, i) => (
+                <div
+                  key={i}
+                  className="bg-gray-200 w-7 h-7 rounded-md"
+                  style={{
+                    height: `${40 + Math.random() * 60}%`,
+                  }}
+                ></div>
+              ))}
+            </div>
+
+            {/* Skeleton X-axis */}
+            <div className="flex justify-between mt-2">
+              {[...Array(7)].map((_, i) => (
+                <div key={i} className="h-3 w-6 bg-gray-200 rounded"></div>
+              ))}
+            </div>
           </div>
         ) : data.length > 0 ? (
           <ResponsiveContainer width="100%" height="100%">
@@ -76,6 +96,7 @@ export const EnrollmentsChart = ({
                   );
                 }}
               />
+
               <XAxis
                 dataKey="month"
                 tick={{ fill: "#8A8A8A" }}
