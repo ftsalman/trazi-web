@@ -21,14 +21,14 @@ export const SidebarNavItem = ({
   // ✅ Single function to handle NavLink and Button styling
   const getClasses = ({ isActive }) => {
     const baseClasses =
-      "h-10 px-2 min-w-10 flex-shrink-0 flex items-center  justify-start gap-2 duration-300 border-0";
+      "h-10 px-2 min-w-10 flex-shrink-0 flex items-center justify-start gap-2 duration-300 border-0";
     const widthClass = isExpanded ? "w-full" : "w-10";
 
     return cn(
       buttonVariants({
         variant: isActive ? "brand-primary" : "tertiary",
         className:
-          "relative text-xs hover:bg-brand-primary-100 duration-300 border-0",
+          "relative text-xs  hover:bg-brand-primary-100 duration-300 border-0",
       }),
       baseClasses,
       widthClass

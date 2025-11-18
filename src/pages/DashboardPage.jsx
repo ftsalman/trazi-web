@@ -74,7 +74,6 @@ export const DashboardPage = () => {
   const [fetchStatus, setFetchStatus] = useState("loading"); // loading, default, error
   const [dashboardData, setDashboardData] = useState(null);
 
-
   const userName = dashboardData?.user?.name || "Admin";
 
   return (
