@@ -27,15 +27,13 @@ export const SidebarNavItem = ({
     return cn(
       buttonVariants({
         variant: isActive ? "brand-primary" : "tertiary",
-        className:
-          "relative text-xs  hover:bg-brand-primary-100 duration-300 border-0",
+        className: isActive ? "text-white " : "text-gray-500 hover:bg-gray-100",
       }),
       baseClasses,
       widthClass
     );
   };
 
-  // ✅ Render Button if no path (for modals like "My Balance")
   if (!path) {
     return (
       <button
@@ -69,7 +67,6 @@ export const SidebarNavItem = ({
     );
   }
 
-  // ✅ Render NavLink for actual routes
   return (
     <NavLink
       to={path}
@@ -89,7 +86,7 @@ export const SidebarNavItem = ({
           isExpanded ? "w-full not-sr-only" : "w-0 sr-only"
         } flex items-center justify-between gap-2 duration-300`}
       >
-        <div className="flex-grow line-clamp-1 break-all">{label}</div>
+        <div className="flex-grow line-clamp-1 break-all    ">{label}</div>
         {showExpandIcon && (
           <div className="flex-shrink-0">
             <IconCheverontDown />

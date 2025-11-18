@@ -13,13 +13,6 @@ export const Navbar = () => {
         <div className="flex items-center gap-3 flex-shrink-0">
           <NavHamburger />
 
-          <img
-            src="/svgs/brand-logo/logo-trazi.svg"
-            alt="logo"
-            width="125"
-            className="flex-shrink-0"
-            loading="lazy"
-          />
         </div>
 
         {/* Right Side */}

@@ -21,6 +21,15 @@ export const Sidebar = () => {
       <SidebarWrapper>
         <SidebarToggleBtn />
         <SidebarBodyWrapper hasScrollable={!isExpanded && currMenu}>
+          <div className="flex items-center justify-start py-2  px-2.5">
+            <img
+            src="/svgs/brand-logo/logo-trazi.svg"
+            alt="logo"
+            width="125"
+            className="flex-shrink-0"
+            loading="lazy"
+          />
+          </div>
           <SidebarContentWrapper>
             <SidebarNavList sidebarData={SIDEBAR_DATA} />
           </SidebarContentWrapper>
