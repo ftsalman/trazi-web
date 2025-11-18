@@ -9,7 +9,7 @@ import { useSidebar } from "../../hooks/useSidebar";
 import { SidebarNavList } from "./SidebarNavList";
 import { SIDEBAR_DATA } from "../../constants/SidebarData";
 import { Button } from "../ui/button/Button";
-import { IconSupport } from "../../assets/icons/interfaceIcons2";
+import { IconLogout, IconSupport } from "../../assets/icons/interfaceIcons2";
 
 export const Sidebar = () => {
   const [currMenu, setCurrMenu] = useState(null);
@@ -25,19 +25,22 @@ export const Sidebar = () => {
             <SidebarNavList sidebarData={SIDEBAR_DATA} />
           </SidebarContentWrapper>
         </SidebarBodyWrapper>
-        <SidebarContentWrapper>
-          <Button
-            className={`
-              w-full flex items-center rounded-md gap-2
-               p-1 bg-white text-white border border-[#FFCB06]
+        <SidebarContentWrapper className=" sticky bottom-0 inset-0 z-[49] mt-auto gap-4 py-4 justify-end  border-gray-200 text-gray-400">
+           
+           <Button
+           variant="tertiary"
+           size="md"
+              className={`
+              w-full flex justify-start rounded-md gap-2
+               p-1 bg-white text-gray-500
                duration-300
             `}
-          >
-            <IconSupport size="24" />
-            {isExpanded && (
-              <span className="whitespace-nowrap">Support Center</span>
+           >
+          <IconLogout size="20"/>
+           {isExpanded && (
+              <span className="whitespace-nowrap">Log Out</span>
             )}
-          </Button>
+           </Button>
         </SidebarContentWrapper>
       </SidebarWrapper>
     </>

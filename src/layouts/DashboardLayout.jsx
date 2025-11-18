@@ -31,7 +31,7 @@ export const DashboardLayout = () => {
   return (
     <div className="overflow-clip h-[100dvh] flex flex-col bg-white">
       <Navbar />
-      <div className="flex flex-grow">
+      <div className={`${containerClasses} relative flex flex-grow`}>
         <Sidebar />
         <div
           className={`dashboard-container overflow-auto overflow-x-hidden panel-scrollbar flex-grow ${containerClasses} duration-300 border-gray-200 p-3 bg-[#FAFBFC]`}

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { StatesList } from "../components/dashboard/StatesList";
 import { EnrollmentsChart } from "../components/dashboard/EnrollmentsChart";
 import { EarningsChart } from "../components/dashboard/EarningsChart";
 import { CoursesChart } from "../components/dashboard/CoursesChart";
 import { TodayRevenueCard } from "../components/dashboard/TodayRevenueCard";
+import { GreetHeader } from "../components/dashboard/GreetHeader";
 
 const ENROLL_DATA = [
   { month: "Jan", value: 40 },
@@ -43,7 +44,6 @@ const EARNINGS_DATA = [
   { value: 80 },
 ];
 
-
 const COURSES_DATA = [
   { month: "Dec", programming: 200, design: 150, technology: 120 },
   { month: "Jan", programming: 220, design: 180, technology: 140 },
@@ -56,7 +56,6 @@ const COURSES_DATA = [
   { month: "Aug", programming: 150, design: 100, technology: 80 },
   { month: "Sep", programming: 170, design: 140, technology: 100 },
 ];
-
 
 const REVENUE_DATA = [
   { value: 30 },
@@ -71,45 +70,53 @@ const REVENUE_DATA = [
   { value: 58 },
 ];
 
-
 export const DashboardPage = () => {
+  const [fetchStatus, setFetchStatus] = useState("loading"); // loading, default, error
+  const [dashboardData, setDashboardData] = useState(null);
+
+
+  const userName = dashboardData?.user?.name || "Admin";
+
   return (
-    <div className="w-full py-4 space-y-8">
-      {/* HEADER */}
-      <div>
-        <h2 className="text-2xl font-semibold text-gray-800">
-          Welcome to Tarzi
-        </h2>
-        <p className="text-sm text-gray-500 mt-1">Hi Admin,</p>
-      </div>
+    <div className="flex flex-col lg:flex-row">
+      <div className="container p-4 flex-grow space-y-8">
+        {/* Header Section */}
 
-      {/* CARDS */}
-      <StatesList data={DUMMY_CARD} />
+        <GreetHeader
+          head={
+            <span className="text-md font-semibold">
+              Hi <span className="text-primary">{userName}</span> ,
+            </span>
+          }
+          isLoading={false}
+          descp="Welcome to Tarzi"
+        />
 
-      {/* CHART ROW */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-2">
-        <div className="xl:col-span-2">
-          <EnrollmentsChart data={ENROLL_DATA} />
+        {/* States card Section  */}
+        <StatesList data={DUMMY_CARD} />
+
+        {/* Charts section */}
+
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-2">
+          <div className="xl:col-span-2">
+            <EnrollmentsChart data={ENROLL_DATA} />
+          </div>
+
+          <div className="xl:col-span-1">
+            <EarningsChart data={EARNINGS_DATA} />
+          </div>
         </div>
 
-        <div className="xl:col-span-1">
-          <EarningsChart data={EARNINGS_DATA} />
-        </div>
-      </div>
+        {/*CoursesChart && TodayRevenueCard  */}
 
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-2">
-        <div className="xl:col-span-2">
-          <CoursesChart 
-          data={COURSES_DATA}
-          
-          />
-        </div>
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-2">
+          <div className="xl:col-span-2">
+            <CoursesChart data={COURSES_DATA} />
+          </div>
 
-        <div className="xl:col-span-1">
-           <TodayRevenueCard
-           data={REVENUE_DATA}
-           
-           />
+          <div className="xl:col-span-1">
+            <TodayRevenueCard data={REVENUE_DATA} />
+          </div>
         </div>
       </div>
     </div>

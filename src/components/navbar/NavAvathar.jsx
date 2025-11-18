@@ -8,7 +8,7 @@ export const NavAvathar = () => {
 
   return (
     <>
-      <Link to="/settings">
+      <Link to="/">
         <img
           src="https://i.pinimg.com/736x/34/5c/6d/345c6d52234bbc72407ea25d49ad945e.jpg"
           alt="avathar"

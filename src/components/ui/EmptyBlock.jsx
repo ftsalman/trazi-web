@@ -2,8 +2,7 @@ import PropTypes from "prop-types";
 
 import { useTranslation } from "react-i18next";
 import { cn } from "../../utils/utils";
-import { IconPlus } from "../../assets/icons/interfaceIcons2";
-import { IconSearch } from "../../assets/icons/InterfaceIcons";
+import { IconPlus, IconSearch } from "../../assets/icons/interfaceIcons2";
 import { Button } from "./button/Button";
 
 const DEAFULT_PRIMARY_LABEL = (
