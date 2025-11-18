@@ -8,7 +8,7 @@ export const buttonVariants = cva(
         default:
           "text-white bg-brand-secondary-500 hover:opacity-90 focus:ring-[3px] focus:ring-brand-secondary-100 focus:border-brand-secondary-600 shadow-black disabled:bg-gray-200 disabled:text-gray-400",
         "brand-primary":
-          "text-black bg-[#333333] hover:opacity-90 focus:ring-[3px] focus:ring-brand-primary-200 focus:border-brand-primary-600 disabled:bg-gray-200 disabled:text-white",
+          "text-white bg-[#333333] hover:opacity-90 focus:ring-[3px] focus:ring-brand-primary-200 focus:border-brand-primary-600 disabled:bg-gray-200 disabled:text-white",
         "brand-secondary":
           "text-white bg-[#2D2D2D] hover:opacity-90 focus:ring-[3px] focus:ring-brand-secondary-100 focus:border-brand-secondary-600 shadow-black disabled:bg-gray-200 disabled:text-gray-400",
         secondary:

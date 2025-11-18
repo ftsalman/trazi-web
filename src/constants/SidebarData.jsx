@@ -1,4 +1,5 @@
-import { IconDashboard } from "../assets/icons/interfaceIcons2";
+import { IconBookOpen, IconGraphBar, Iconsheld, IconWallet } from "../assets/icons/InterfaceIcons";
+import { IconCalendar, IconDashboard, IconSettings } from "../assets/icons/interfaceIcons2";
 
 export  const SIDEBAR_DATA  = [
 
@@ -7,5 +8,41 @@ export  const SIDEBAR_DATA  = [
     path: "/",
     tooltip: "Go to Dashboard",
     icon: <IconDashboard color="#ffff"   />,
+  },
+  {
+    label: "Enquiry",
+    path:"/enquiry",
+    tooltip: "Go to Enquiry",
+    icon:<IconGraphBar size="20"/>,
+  },
+   {
+    label: "Admission",
+    path:"/admission",
+    tooltip: "Go to Enquiry",
+    icon:<IconBookOpen size="20"/>,
+  },
+   {
+    label: "Payments",
+    path:"/payment",
+    tooltip: "Go to Enquiry",
+    icon:<IconWallet size="20"/>,
+  },
+   {
+    label: "Master",
+    path:"/master",
+    tooltip: "Go to Enquiry",
+    icon:<Iconsheld size="20"/>,
+  },
+   {
+    label: "Reports",
+    path:"/reports",
+    tooltip: "Go to Enquiry",
+    icon:<IconCalendar size="20"/>,
+  },
+   {
+    label: "Settings",
+    path:"/settings",
+    tooltip: "Go to Enquiry",
+    icon:<IconSettings size="20"/>,
   },
 ]
