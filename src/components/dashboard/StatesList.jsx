@@ -91,7 +91,7 @@ export const StatCard = ({
       {icon}
     </div>
     <div className="flex-grow">
-      <p className="text-sm font-semibold text-gray-500">{label}</p>
+      <p className="text-sm font-semibold  whitespace-nowrap text-gray-500">{label}</p>
       {isLoading ? (
         <div className="mt-1 h-[29px] w-[50px] rounded-full bg-gray-300 animate-pulse"></div>
       ) : (

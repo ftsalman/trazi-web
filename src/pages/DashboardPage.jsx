@@ -80,7 +80,6 @@ export const DashboardPage = () => {
     <div className="flex flex-col lg:flex-row">
       <div className="container p-4 flex-grow space-y-8">
         {/* Header Section */}
-
         <GreetHeader
           head={
             <span className="text-md font-semibold">
