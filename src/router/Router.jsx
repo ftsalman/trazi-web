@@ -9,6 +9,7 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Navigate to="/auth/login" />,
   },
+
   {
     path: "/auth",
     children: [
@@ -26,8 +27,9 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
   {
-    path: "/",
+    path: "/dashboard",  
     element: <DashboardLayout />,
     children: [
       {
