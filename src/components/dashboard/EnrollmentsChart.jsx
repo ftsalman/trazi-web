@@ -19,8 +19,7 @@ const CustomTooltip = ({ active, payload, label }) => {
     <div className="bg-white text-gray-900 px-3 py-2 rounded-lg shadow border border-gray-200">
       <p className="text-xs font-semibold">{label}</p>
       <p className="text-sm">
-        Enrollments:{" "}
-        <span className="font-bold">{payload[0].value}</span>
+        Enrollments: <span className="font-bold">{payload[0].value}</span>
       </p>
     </div>
   );
@@ -59,7 +58,6 @@ export const EnrollmentsChart = ({
       {/* Chart */}
       <div className="w-full h-[15rem] mt-2">
         {isLoading ? (
-          /* ✔ Loading Skeleton */
           <div className="flex flex-col gap-3 h-full animate-pulse px-2">
             <div className="flex items-end justify-between h-full gap-2">
               {[...Array(10)].map((_, i) => (

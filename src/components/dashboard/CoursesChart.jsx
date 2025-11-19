@@ -56,12 +56,12 @@ export const CoursesChart = ({
 
                   <XAxis
                     dataKey="month"
-                    tick={{ fill: "#555" }}
+                    tick={{ fill: "#8A8A8A" }}
                     tickLine={false}
                     axisLine={false}
                   />
                   <YAxis
-                    tick={{ fill: "#555" }}
+                    tick={{ fill: "#8A8A8A" }}
                     tickLine={false}
                     axisLine={false}
                   />
