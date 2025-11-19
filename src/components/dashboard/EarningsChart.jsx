@@ -29,7 +29,7 @@ export const EarningsChart = ({
       ? data.reduce((sum, item) => sum + (item.value || 0), 0)
       : 12602;
 
-  // ⭐ Custom Tooltip
+
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
@@ -46,8 +46,7 @@ export const EarningsChart = ({
 
   return (
     <CardContainer className="w-full p-4">
-      
-      {/** ⭐ IF LOADING → SHOW FULL SKELETON */}
+  
       {isLoading ? (
         <div className="w-full h-full rounded-lg">
 
@@ -76,7 +75,7 @@ export const EarningsChart = ({
         </div>
       ) : (
         
-        /** ⭐ IF NOT LOADING → SHOW FULL CHART */
+       
         <>
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
