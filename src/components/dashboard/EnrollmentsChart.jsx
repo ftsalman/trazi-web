@@ -5,10 +5,26 @@ import {
   BarChart,
   ReferenceLine,
   ResponsiveContainer,
+  Tooltip,
   XAxis,
 } from "recharts";
 import { IconChatBar } from "../../assets/icons/interfaceIcons2";
 import { Button } from "../ui/button/Button";
+
+// ⭐ CUSTOM TOOLTIP
+const CustomTooltip = ({ active, payload, label }) => {
+  if (!active || !payload || !payload.length) return null;
+
+  return (
+    <div className="bg-white text-gray-900 px-3 py-2 rounded-lg shadow border border-gray-200">
+      <p className="text-xs font-semibold">{label}</p>
+      <p className="text-sm">
+        Enrollments:{" "}
+        <span className="font-bold">{payload[0].value}</span>
+      </p>
+    </div>
+  );
+};
 
 export const EnrollmentsChart = ({
   onFetch = () => {},
@@ -40,11 +56,11 @@ export const EnrollmentsChart = ({
         </Button>
       </div>
 
-      {/* Chart Area */}
+      {/* Chart */}
       <div className="w-full h-[15rem] mt-2">
         {isLoading ? (
+          /* ✔ Loading Skeleton */
           <div className="flex flex-col gap-3 h-full animate-pulse px-2">
-            {/* Skeleton Bars */}
             <div className="flex items-end justify-between h-full gap-2">
               {[...Array(10)].map((_, i) => (
                 <div
@@ -57,7 +73,6 @@ export const EnrollmentsChart = ({
               ))}
             </div>
 
-            {/* Skeleton X-axis */}
             <div className="flex justify-between mt-2">
               {[...Array(7)].map((_, i) => (
                 <div key={i} className="h-3 w-6 bg-gray-200 rounded"></div>
@@ -67,6 +82,8 @@ export const EnrollmentsChart = ({
         ) : data.length > 0 ? (
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data}>
+              <Tooltip cursor={false} content={<CustomTooltip />} />
+
               <ReferenceLine
                 y={134}
                 stroke="#AAAAAA"
@@ -74,11 +91,11 @@ export const EnrollmentsChart = ({
                 strokeWidth={1}
               />
 
+              {/* ✔ Custom Highlight Bars */}
               <Bar
                 dataKey="value"
                 radius={[6, 6, 0, 0]}
                 barSize={30}
-                fill="#E8ECF7"
                 shape={(props) => {
                   const { x, y, width, height, payload } = props;
                   const isHighlight = payload.highlight;
@@ -91,7 +108,7 @@ export const EnrollmentsChart = ({
                       height={height}
                       rx="6"
                       ry="6"
-                      fill={isHighlight ? "#000" : "#E8ECF7"}
+                      fill={isHighlight ? "#000000" : "#E8ECF7"}
                     />
                   );
                 }}

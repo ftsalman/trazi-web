@@ -13,17 +13,21 @@ export const CoursesChart = ({
   onFetch = () => {},
   isLoading = false,
 }) => {
-  const CustomeTooltip = ({ active, payload }) => {
+  const CustomeTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
-      return (
-        <div className="bg-white shadow-lg rounded-lg p-3 border border-gray-200">
-          <p className="text-sm font-semibold text-gray-800">
-            ₹ {payload[0].value.toLocaleString()}
+    return (
+      <div className="bg-yellow-400 shadow-lg rounded-lg p-3 ">
+        <p className="text-sm font-bold text-white">{label}</p>
+
+        {payload.map((item, index) => (
+          <p key={index} className="text-sm text-white">
+            {item.name}: {item.value.toLocaleString()}
           </p>
-        </div>
-      );
-    }
-    return null;
+        ))}
+      </div>
+    );
+  }
+  return null;
   };
   return (
     <>

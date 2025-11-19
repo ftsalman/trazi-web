@@ -35,7 +35,7 @@ export const EarningsChart = ({
       return (
         <div className="bg-yellow-300 shadow-lg text-center rounded-lg p-3 border border-gray-200">
           <p className="text-sm font-semibold text-gray-800">
-             <p className="text-xs text-gray-800"> month earnings</p>
+             <p className="text-xs text-gray-800"> monthly  earnings</p>
             ₹ {payload[0].value.toLocaleString()}
           </p>
         </div>
