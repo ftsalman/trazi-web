@@ -51,7 +51,7 @@ export const LoginPage = () => {
 
       if (
         formData.email === "admin@example.com" &&
-        formData.password === "1234"
+        formData.password === "123"
       ) {
         console.log("Login Success!");
         navigate("/");
