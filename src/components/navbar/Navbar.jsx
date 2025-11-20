@@ -13,17 +13,24 @@ export const Navbar = () => {
         <div className="flex items-center gap-3 flex-shrink-0">
           <NavHamburger />
 
+          <div className="flex items-center justify-start py-2  px-2.5">
+            <img
+              src="/svgs/brand-logo/logo-trazi.svg"
+              alt="logo"
+              width="125"
+              className="flex-shrink-0"
+              loading="lazy"
+            />
+          </div>
         </div>
 
         {/* Right Side */}
         <div className="flex items-center gap-3 flex-shrink-0">
-
           <div>
-            <NavSrchBar/>
+            <NavSrchBar />
           </div>
 
           <NavNotifMenu />
-          
 
           <div className="pr-2 flex items-center gap-2 flex-shrink-0">
             <NavLangMenu />
