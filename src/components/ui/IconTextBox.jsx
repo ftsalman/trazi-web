@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "../../utils/utils";
-import { inputboxVariants } from "./input-box/inputBoxVariants";
+import { inputboxVariants } from "./input-Box/inputBoxVariants";
 
 export const IconTextBox = ({
   prefix,
