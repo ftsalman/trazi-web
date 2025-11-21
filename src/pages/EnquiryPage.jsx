@@ -11,138 +11,135 @@ import DataTableAlt from "../components/data-tabel/DataTableAlt";
 import { PageSearchBar } from "../components/ui/PageSearchBar";
 import { EnquiryStatesList } from "../components/enquiry/EnquiryStatesList";
 import Avathar from "../components/ui/Avathar";
-import { ActionsCell } from "../components/data-tabel/DataTabelCell";
 import { TableHeader } from "../components/data-tabel/TableHeader";
+import { ActionsCell } from "../components/data-tabel/DataTableCell";
 
 export const EnquiryPage = () => {
   const TABLE_COLUMNS = [
-    {
-      id: "1",
-      head: "#",
-      key: "id",
-      width: "60px",
-      isSortable: true,
-      align: "center", // Changed to center
-    },
+    // {
+    //   id: "1",
+    //   head: "ID",
+    //   key: "ID",
+    //   isSortable: true,
+    //   isFixed: false,
+    // },
     {
       id: "2",
       head: "Student Name",
-      key: "studentName",
+      key: "STUDENTNAME",
       isSortable: true,
-      width: "200px", // Added fixed width
-      render: ({ studentName, PROFILE_IMG }) => (
+      isFixed: false,
+      render: ({ STUDENTNAME, PROFILE_IMG }) => (
         <div className="flex items-center p-4 gap-3 min-w-0">
           <Avathar
             className="size-9 shrink-0"
             imgUrl={PROFILE_IMG || ""}
             loading={false}
           />
-          <span className="line-clamp-2 truncate min-w-0">{studentName}</span>
+          <span className="line-clamp-2 truncate min-w-0">{STUDENTNAME}</span>
         </div>
       ),
     },
     {
       id: "3",
       head: "Contact",
-      key: "contact",
+      key: "MOBILE",
       isSortable: true,
-      align: "left",
-      width: "140px", // Added fixed width
+      isFixed: false,
     },
     {
       id: "4",
       head: "Course Name",
-      key: "courseName",
+      key: "COURSENAME",
       isSortable: true,
-      align: "left",
-      width: "250px", // Added fixed width
-      render: (row) => (
-        <div className="p-4">
-          <span className="line-clamp-2">{row.courseName}</span>
+      isFixed: false,
+      render: ({ COURSENAME, COUSRSE_IMG }) => (
+        <div className=" flex  items-center p-4 gap-3 min-w-0">
+          <Avathar
+            className="size-9 shrink-0"
+            imgUrl={COUSRSE_IMG}
+            loading={false}
+          />
+          <span className="line-clamp-2 truncate min-w-0">{COURSENAME}</span>
         </div>
       ),
     },
     {
       id: "5",
       head: "Status",
-      key: "status",
+      key: "STATUS",
       isSortable: true,
-      align: "center", // Changed to center
-      width: "120px", // Added fixed width
-      render: (row) => (
-        <div className="flex justify-center p-4">
-          <div className="flex items-center gap-2">
-            <span
-              className={`w-2 h-2 rounded-full ${
-                row?.status === "Approved" ? "bg-green-500" : "bg-yellow-500"
-              }`}
-            ></span>
-            <span className="capitalize">{row?.status || "Unknown"}</span>
-          </div>
-        </div>
-      ),
+      isFixed: false,
+      render: ({ STATUS }) => {
+        const status = STATUS?.toLowerCase();
+
+        const dotColor =
+          status === "approved"
+            ? "bg-green-500"
+            : status === "pending"
+            ? "bg-yellow-500"
+            : "bg-red-500";
+
+        return (
+          <Button
+            variant="secondary"
+            size="sm"
+            className="flex items-center gap-2 px-2 py-0.5 h-6 rounded-lg"
+          >
+            <span className={`w-2 h-2 rounded-full ${dotColor}`}></span>
+            <span className="capitalize">{STATUS}</span>
+          </Button>
+        );
+      },
     },
     {
       id: "6",
       head: "Amount",
-      key: "amount",
+      key: "AMOUNT",
       isSortable: true,
-      align: "right", // Changed to right for numbers
-      width: "120px", // Added fixed width
-      render: (row) => (
-        <div className="p-4 text-right">₹ {row.amount.toLocaleString()}</div>
-      ),
+      isFixed: false,
+      render:({AMOUNT})=>(
+        <span className="line-clamp-2 truncate min-w-0">₹{AMOUNT}</span>
+      )
     },
   ];
 
   const [enquiryData, setEnquiryData] = useState([
     {
-      id: 1,
-      studentName: "Arshad",
+      ID: "1",
+      STUDENTNAME: "Abhishek",
+      MOBILE: "9839791811",
+      COURSENAME: "Webdevelopement",
+      COUSRSE_IMG:
+        "https://i.pinimg.com/736x/56/67/93/5667936906181a6fbe0501b471e2b5bd.jpg",
+      STATUS: "pending",
+      AMOUNT: "40000",
       PROFILE_IMG:
-        "https://i.pinimg.com/736x/0f/81/f0/0f81f0a8a1ec5ff443696c10fff7a543.jpg",
-      contact: "9839791811",
-      courseName: "Product Photography Techniques",
-      status: "Approved",
-      amount: 20000,
+        "https://i.pinimg.com/1200x/7d/ed/46/7ded46b5c92e1c9febb7eee0f891f8ba.jpg",
     },
     {
-      id: 2,
-      studentName: "Rahul Sharma",
+      ID: "2",
+      STUDENTNAME: "Shuhaib",
+      MOBILE: "9839791811",
+      COURSENAME: "MERN STACk",
+      COUSRSE_IMG:
+        "https://i.pinimg.com/736x/7e/ea/54/7eea54df0dd614c399c2288ffc5bcbd4.jpg",
+      STATUS: "Approved",
+      AMOUNT: "10000",
       PROFILE_IMG:
-        "https://i.pinimg.com/736x/0f/81/f0/0f81f0a8a1ec5ff443696c10fff7a543.jpg",
-      contact: "9876543210",
-      courseName: "Advanced Digital Marketing",
-      status: "Pending",
-      amount: 15000,
+        "https://i.pinimg.com/736x/6f/2e/13/6f2e13efa2bbdaf318967ece2314ee6f.jpg",
     },
-    {
-      id: 3,
-      studentName: "Priya Patel",
-      PROFILE_IMG: "",
-      contact: "9123456789",
-      courseName: "Web Development Bootcamp",
-      status: "Pending",
-      amount: 25000,
-    },
-    {
-      id: 4,
-      studentName: "Amit Kumar Singh",
+        {
+      ID: "3",
+      STUDENTNAME: "Shuhaib",
+      MOBILE: "9839791811",
+      COURSENAME: "Digital Marketing",
+      COUSRSE_IMG:
+        "https://i.pinimg.com/736x/a2/c2/ad/a2c2adf0ce6b41baf4f758103d4458cc.jpg",
+      STATUS: "Approved",
+      AMOUNT: "20000",
       PROFILE_IMG:
-        "https://i.pinimg.com/736x/0f/81/f0/0f81f0a8a1ec5ff443696c10fff7a543.jpg",
-      contact: "9988776655",
-      courseName: "Data Science Fundamentals",
-      status: "Approved",
-      amount: 30000,
-    },
-    {
-      id: 5,
-      studentName: "Sneha Gupta",
-      PROFILE_IMG: "",
-      contact: "9876541230",
-      courseName: "UI/UX Design Masterclass",
-      status: "Pending",
-      amount: 18000,
+        "https://i.pinimg.com/736x/38/54/a8/3854a8e825bc816e7d7c2caa2c255460.jpg",
     },
   ]);
 
@@ -165,21 +162,19 @@ export const EnquiryPage = () => {
     id: "7",
     head: "Actions",
     align: "center",
-    width: "140px", // Added fixed width
     isFixed: true,
-    isLeftFixed: false,
+    isFixed: true,
+    isLeftFixed: true,
     render: (item) => (
-      <div className="flex justify-center p-2">
-        <ActionsCell
-          className="min-w-[120px] px-2 py-1 flex items-center justify-center gap-2"
-          data={item}
-          actions={{
-            delete: (data) => createAction("delete", data),
-            edit: handleEdit,
-            changePassword: () => createAction("change-password", item),
-          }}
-        />
-      </div>
+      <ActionsCell
+        data={item}
+        actions={{
+          delete: (data) => createAction("delete", data),
+          edit: handleEdit,
+          admit: (data) => createAction("admit", data),
+
+        }}
+      />
     ),
   };
 
@@ -218,7 +213,7 @@ export const EnquiryPage = () => {
         ]}
       />
 
-      <div className="flex-1 container mx-auto border rounded-lg border-gray-200 bg-white">
+      <div className="flex-1 container mx-auto border rounded-lg border-gray-200 ">
         <TableHeader
           title="Enquiry List"
           count={`${totalEnquiries} Enquiries`}
@@ -233,13 +228,14 @@ export const EnquiryPage = () => {
             </Button>
           }
         />
-        <div className="overflow-y-auto panel-scrollbar h-[calc(100vh-300px)]">
+        <div className="overflow-y-auto no-scrollbar h-[calc(100vh-300px)]">
           <DataTableAlt
             columns={[...TABLE_COLUMNS, tableActionColumn]}
             data={enquiryData}
             isLoading={false}
-            containerClassName="h-full"
-            className="h-full rounded-t-none"
+            containerClassName=" p-0 px-2
+            "
+            className="h-full p-0  rounded-t-none"
           />
         </div>
       </div>

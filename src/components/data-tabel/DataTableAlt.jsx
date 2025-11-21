@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import  {EmptyMessage}  from '../ui/EmptyMessage'
-import { cn } from "../../utils/utils";
+import { cn, sortArr } from "../../utils/utils";
 import { IconFilterAlt2 } from "../../assets/icons/InterfaceIcons";
 import EmptyBlock from "../ui/EmptyBlock";
 import { Button } from "../ui/button/Button";
@@ -50,7 +50,6 @@ const renderRowItems = (columns, dataItem, columnIndex, emptyMsg = "") => {
 };
 
 const DataTableAlt = ({
-
 
   // new
 
@@ -240,7 +239,7 @@ const DataTableAlt = ({
 
                             <tr
                               onClick={(e) => handleRowClick(e, data)}
-                              className={`min-h-11 bg-white ${
+                              className={`min-h-11 ${
                                 onRowClick &&
                                 "cursor-pointer hover:bg-gray-100 clickable-row"
                               } duration-300`}
