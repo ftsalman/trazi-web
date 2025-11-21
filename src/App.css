@@ -47,3 +47,54 @@
 
 
 
+
+
+/* Table CSS ===================================================================================================== */
+
+.main-table tbody tr:nth-child(odd) {
+  @apply bg-white;
+}
+
+.main-table tbody tr:nth-child(even) {
+  @apply bg-gray-50;
+}
+
+.main-table .clickable-row:hover {
+  @apply bg-gray-100;
+}
+
+.main-table tbody tr:nth-child(even) .fixed-td {
+  @apply bg-gray-50;
+}
+
+.main-table tbody tr:nth-child(odd) .fixed-td {
+  @apply bg-white;
+}
+
+.main-table .clickable-row:hover .fixed-td {
+  @apply bg-gray-200 duration-300;
+}
+
+.main-table tbody tr .selected-tr {
+  @apply bg-gray-200;
+}
+
+/*  */
+
+.main-table-alt .clickable-row:hover {
+  @apply bg-gray-50;
+}
+
+.main-table-alt tbody tr .fixed-td {
+  @apply bg-white;
+}
+
+.main-table-alt .clickable-row:hover .fixed-td {
+  @apply bg-gray-50/60 duration-300;
+}
+
+.main-table-alt tbody tr .selected-tr {
+  @apply bg-gray-200;
+}
+
+/* Table CSS ====

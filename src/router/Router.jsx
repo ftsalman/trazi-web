@@ -3,6 +3,7 @@ import { DashboardLayout } from "../layouts/DashboardLayout";
 import { DashboardPage } from "../pages/DashboardPage";
 import { AuthLayout } from "../layouts/AuthLayout";
 import { LoginPage } from "../pages/LoginPage";
+import { EnquiryPage } from "../pages/EnquiryPage";
 
 export const router = createBrowserRouter([
   {
@@ -29,12 +30,16 @@ export const router = createBrowserRouter([
   },
 
   {
-    path: "/dashboard",  
+    path: "/",  
     element: <DashboardLayout />,
     children: [
       {
         index: true,
         element: <DashboardPage />,
+      },
+      {
+        path:"/enquiry",
+        element: <EnquiryPage/>
       },
     ],
   },

@@ -5,7 +5,7 @@ export  const SIDEBAR_DATA  = [
 
  {
     label: "Dashboard",
-    path: "/dashboard",
+    path: "/",
     tooltip: "Go to Dashboard",
     icon: <IconDashboard color="#ffff"   />,
   },

@@ -34,7 +34,7 @@ export const DashboardLayout = () => {
       <div className={`${containerClasses} relative flex flex-grow`}>
         <Sidebar />
         <div
-          className={`dashboard-container overflow-auto overflow-x-hidden panel-scrollbar flex-grow ${containerClasses} duration-300 border-gray-200 p-3 bg-[#FAFBFC]`}
+          className={`dashboard-container overflow-auto overflow-x-hidden panel-scrollbar flex-grow ${containerClasses} duration-300 border-gray-200  bg-[#FAFBFC]`}
         >
           <Outlet />
         </div>

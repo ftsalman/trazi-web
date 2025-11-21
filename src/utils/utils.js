@@ -25,3 +25,12 @@ export const sortArr = (array, key, sortType) => {
     return 0;
   });
 };
+
+
+export const getMediaUrl = (url = "") => {
+  if (!url) return null;
+
+  if (url.startsWith("/")) return import.meta.env.VITE_BASE_URL + url;
+
+  return import.meta.env.VITE_BASE_URL + "/" + url + " ";
+};

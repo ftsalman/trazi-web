@@ -54,7 +54,7 @@ export const LoginPage = () => {
         formData.password === "123"
       ) {
         console.log("Login Success!");
-        navigate("/dashboard");
+        navigate("/");
       } else {
       
         setFormErrors({
