@@ -167,7 +167,7 @@ const DataTableAlt = ({
                           : isFixed &&
                             !isLeftFixed &&
                             "sticky right-0 z-30 bg-[#F8FAFC]"
-                      } relative  whitespace-nowrap group  text-left duration-300`}
+                      } relative  whitespace-nowrap group text-left duration-300`}
                       title={head}
                     >
                       <div className={` font-semibold text-[#030229]`}>

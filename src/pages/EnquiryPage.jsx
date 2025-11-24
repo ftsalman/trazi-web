@@ -13,16 +13,17 @@ import { EnquiryStatesList } from "../components/enquiry/EnquiryStatesList";
 import Avathar from "../components/ui/Avathar";
 import { TableHeader } from "../components/data-tabel/TableHeader";
 import { ActionsCell } from "../components/data-tabel/DataTableCell";
+import { NewEnquiryDrawer } from "../components/enquiry/NewEnquiryDrawer";
 
 export const EnquiryPage = () => {
   const TABLE_COLUMNS = [
-    // {
-    //   id: "1",
-    //   head: "ID",
-    //   key: "ID",
-    //   isSortable: true,
-    //   isFixed: false,
-    // },
+    {
+      id: "1",
+      head: "ID",
+      key: "ID",
+      isSortable: true,
+      isFixed: false,
+    },
     {
       id: "2",
       head: "Student Name",
@@ -98,9 +99,9 @@ export const EnquiryPage = () => {
       key: "AMOUNT",
       isSortable: true,
       isFixed: false,
-      render:({AMOUNT})=>(
+      render: ({ AMOUNT }) => (
         <span className="line-clamp-2 truncate min-w-0">₹{AMOUNT}</span>
-      )
+      ),
     },
   ];
 
@@ -115,7 +116,7 @@ export const EnquiryPage = () => {
       STATUS: "pending",
       AMOUNT: "40000",
       PROFILE_IMG:
-        "https://i.pinimg.com/1200x/7d/ed/46/7ded46b5c92e1c9febb7eee0f891f8ba.jpg",
+        "https://i.pinimg.com/736x/dd/99/e6/dd99e6233b2fdd33893297094b895a3c.jpg",
     },
     {
       ID: "2",
@@ -129,7 +130,19 @@ export const EnquiryPage = () => {
       PROFILE_IMG:
         "https://i.pinimg.com/736x/6f/2e/13/6f2e13efa2bbdaf318967ece2314ee6f.jpg",
     },
-        {
+    {
+      ID: "3",
+      STUDENTNAME: "Shuhaib",
+      MOBILE: "9839791811",
+      COURSENAME: "Digital Marketing",
+      COUSRSE_IMG:
+        "https://i.pinimg.com/736x/a2/c2/ad/a2c2adf0ce6b41baf4f758103d4458cc.jpg",
+      STATUS: "Approved",
+      AMOUNT: "20000",
+      PROFILE_IMG:
+        "https://i.pinimg.com/736x/c2/93/07/c2930742a22de3cb367cc95e9f902416.jpg",
+    },
+    {
       ID: "3",
       STUDENTNAME: "Shuhaib",
       MOBILE: "9839791811",
@@ -141,12 +154,25 @@ export const EnquiryPage = () => {
       PROFILE_IMG:
         "https://i.pinimg.com/736x/38/54/a8/3854a8e825bc816e7d7c2caa2c255460.jpg",
     },
+    {
+      ID: "3",
+      STUDENTNAME: "Shuhaib",
+      MOBILE: "9839791811",
+      COURSENAME: "Digital Marketing",
+      COUSRSE_IMG:
+        "https://i.pinimg.com/736x/a2/c2/ad/a2c2adf0ce6b41baf4f758103d4458cc.jpg",
+      STATUS: "Approved",
+      AMOUNT: "20000",
+      PROFILE_IMG:
+        "https://i.pinimg.com/736x/c2/93/07/c2930742a22de3cb367cc95e9f902416.jpg",
+    },
   ]);
 
   const [fetchStatus, setFetchStatus] = useState("loading");
   const [searchValue, setSearchValue] = useState("");
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [filterFormData, setFilterFormData] = useState();
+  const [isCreateDrawerOpen, setIsCreateDrawerOpen] = useState(false);
 
   const handleEdit = (data) => {
     console.log("Edit:", data);
@@ -172,73 +198,77 @@ export const EnquiryPage = () => {
           delete: (data) => createAction("delete", data),
           edit: handleEdit,
           admit: (data) => createAction("admit", data),
-
         }}
       />
     ),
   };
 
   return (
-    <PageContainer className="p-3 pb-0 h-full flex flex-col">
-      <div className="px-4 space-y-2.5">
-        <EnquiryStatesList />
-      </div>
-
-      <PageToolbarGroup
-        actions={[
-          <div key="toolbar" className="flex items-center gap-3 w-full">
-            <div className="flex-grow">
-              <PageSearchBar InputClassName="w-full max-w-[40rem]" />
-            </div>
-
-            <Button
-              size="md"
-              variant="secondary"
-              className="flex items-center gap-2 bg-white px-3 py-2 border border-gray-300"
-              onClick={() => alert("Filter Clicked")}
-            >
-              <IconSort />
-              Filter
-            </Button>
-
-            <Button
-              size="md"
-              variant="secondary"
-              className="flex items-center gap-2 bg-black text-white px-3 py-2 hover:bg-gray-800"
-            >
-              <IconPlus />
-              Add New Enquiry
-            </Button>
-          </div>,
-        ]}
-      />
-
-      <div className="flex-1 container mx-auto border rounded-lg border-gray-200 ">
-        <TableHeader
-          title="Enquiry List"
-          count={`${totalEnquiries} Enquiries`}
-          countVariant="yellow"
-          Actions={
-            <Button
-              variant="tertiary"
-              size="sm"
-              onClick={() => alert("More options")}
-            >
-              <IconMoreVertical />
-            </Button>
-          }
-        />
-        <div className="overflow-y-auto no-scrollbar h-[calc(100vh-300px)]">
-          <DataTableAlt
-            columns={[...TABLE_COLUMNS, tableActionColumn]}
-            data={enquiryData}
-            isLoading={false}
-            containerClassName=" p-0 px-2
-            "
-            className="h-full p-0  rounded-t-none"
-          />
+    <>
+      <PageContainer className="p-3 pb-0 h-full flex flex-col">
+        <div className="px-4 space-y-2.5">
+          <EnquiryStatesList data={""} isLoading={true} />
         </div>
-      </div>
-    </PageContainer>
+
+        <PageToolbarGroup
+          actions={[
+            <div key="toolbar" className="flex items-center gap-3 w-full">
+              <div className="flex-grow">
+                <PageSearchBar InputClassName="w-full max-w-[40rem]" />
+              </div>
+
+              <Button
+                size="md"
+                variant="secondary"
+                className="flex items-center gap-2 bg-white px-3 py-2 border border-gray-300"
+                onClick={() => alert("Filter Clicked")}
+              >
+                <IconSort />
+                Filter
+              </Button>
+
+              <Button
+                size="md"
+                variant="secondary"
+                onClick={() => setIsCreateDrawerOpen(true)}
+                className="flex items-center gap-2 bg-black text-white px-3 py-2 hover:bg-gray-800"
+              >
+                <IconPlus />
+                Add New Enquiry
+              </Button>
+            </div>,
+          ]}
+        />
+
+        <div className="flex-1 container mx-auto border rounded-lg border-gray-200 ">
+          <TableHeader
+            title="Enquiry List"
+            count={`${totalEnquiries} Enquiries`}
+            countVariant="yellow"
+            Actions={
+              <Button
+                variant="tertiary"
+                size="sm"
+                onClick={() => alert("More options")}
+              >
+                <IconMoreVertical />
+              </Button>
+            }
+          />
+          <div className="overflow-y-auto no-scrollbar h-[calc(100vh-300px)]">
+            <DataTableAlt
+              columns={[...TABLE_COLUMNS, tableActionColumn]}
+              data={enquiryData}
+              isLoading={false}
+              containerClassName=" p-0 px-2
+            "
+              className="h-full p-0  rounded-t-none"
+            />
+          </div>
+        </div>
+      </PageContainer>
+
+      {isCreateDrawerOpen && <NewEnquiryDrawer />}
+    </>
   );
 };

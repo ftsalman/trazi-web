@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { cn } from "../../utils/utils";
-import { inputboxVariants } from "./input-box/inputBoxVariants";
 import { IconCheverontDown } from "../../assets/icons/InterfaceIcons";
+import { inputboxVariants } from "./input-Box/inputBoxVariants";
 
 const Select = ({
   className = "",
